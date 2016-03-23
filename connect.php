@@ -12,14 +12,16 @@ $conn = mysql_connect($servername, $username, $password);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-echo "Connected successfully";
+$respconn="Sucessfuly connected to server";
+//echo "Connected successfully"; 
 
 $db_selected = mysql_select_db($database, $conn);
 if (!$db_selected) {
     die ('Can\'t use foo : ' . mysql_error());
 }
 else{
-    echo "Sucessfuly connected to DB";
+    //echo "Sucessfuly connected to DB";
 }
-echo $servername.$username;
+//echo $servername.$username;
+header('HTTP/ 200 Reason Phrase As You Wish');
 ?>

@@ -18,12 +18,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <p>Hello this is the first page</p>
-<p>later edit</p>
-<p>git succes</p>
-<div class="container">
-  <h1>My First Bootstrap Page</h1>
-  <p>This is some text.</p> 
-</div>
+    <div class="container">
+      <h1>Welcome to ITSquare Parts Webshop</h1>
+      <p>This website is build by Alin & Adelin</p> 
+    </div>
 </body>
 </html>
