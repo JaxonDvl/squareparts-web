@@ -21,6 +21,7 @@
 
     <body>
         <a href="#test">this is a test link</a>
+        <a href="#second">this is a second test link</a>
         <div class="container">
             <h1>Welcome to ITSquare Parts Webshop</h1>
             <p>This website is build by Alin & Adelin</p>
