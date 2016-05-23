@@ -5,7 +5,7 @@
     $query = "SELECT * FROM Products"; 
     $result = mysqli_query($db,$query);
     
-    echo "<table class='table table-hover table-bordered'>";
+    echo "<table class='table table-hover table-bordered addedtable' >";
     echo "<thead><tr><td>Category ID</td><td>Product Name</td><td>Price</td><td>Quantity</td><td>Description</td></tr></thead>";
     
     while($row = mysqli_fetch_array($result)){

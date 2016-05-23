@@ -13,10 +13,13 @@ $(document).ready(function() {
         // console.log('it works');
         var c_id = $(this).attr('name');
         delete_category(c_id);
+        $(this).parent().siblings().remove();
+        $(this).parent().remove();
 
     });
     $('#get_products').on('click', function(e) {
         // console.log('it works');
+        $('table').remove('.addedtable');
         get_products();
 
     });
@@ -51,7 +54,7 @@ function add_product(){
             }
     })
     .done(function( msg ) {
-        console.log('done products data');
+        alert('added new product');
     });
 }
 

@@ -9,10 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Square Parts - WebStore</title>
     <link href='https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy:400,400italic' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="style.css">
+    
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="style.css">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
@@ -61,26 +61,32 @@
             </div>
         </div>
     </div>
+    <div class="container col-sm-8 center">
+        <div class="row">
               <?php 
     
     $query = "SELECT * FROM Products"; 
     $result = mysqli_query($db,$query);
     
     echo "<table class='table table-hover table-bordered'>";
-    echo "<thead><tr><td>Category ID</td><td>Product Name</td><td>Price</td><td>Quantity</td><td>Description</td></tr></thead>";
+    echo "<thead><tr><td>Category ID</td><td>Product Name</td><td>Price</td><td>Quantity</td><td>Description</td><td>Buy Amount</td><td>Operation</td></tr></thead>";
     
     while($row = mysqli_fetch_array($result)){
         $currid = $row['c_id'];
         $query2 = "SELECT c_id, name FROM Categories WHERE c_id = '$currid'";
         $result2 = mysqli_query($db,$query2);
         $row2 = mysqli_fetch_assoc($result2);
-    echo "<tr><td>" . $row2['name'] . "</td><td>" . $row['name'] . "</td><td>" . $row['price'] . "$</td><td>" . $row['quantity'] . "</td><td>" . $row['description'] . "</td></tr>";  
-    }
+        if($row['quantity']>0){
+            echo "<tr><td>" . $row2['name'] . "</td><td>" . $row['name'] . "</td><td>" . $row['price'] . "$</td><td>" . $row['quantity'] . "</td><td>" . $row['description'] . "</td><td><input type='number' class='form-control' id='quantity' name='quantity' min='0' max='999' placeholder='0'></td><td><button type='button' class='btn btn-success delete_category' name="."'".$row['id']."'"." >Buy</button></td></tr>";  
+        }
+        }
     
     echo "</table>"; 
     
     mysqli_close($db); 
     ?>
+    </div>
+    </div>
     </body>
 
     </html>
