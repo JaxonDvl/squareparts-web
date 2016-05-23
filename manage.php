@@ -35,13 +35,16 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav ">
                             <li>
-                                <a href="#">Products</a>
+                                <a href="buy.php">Add sale</a>
                             </li>
                             <li>
-                                <a href="#">Categories</a>
+                                <a href="categories.php">Manage Categories</a>
                             </li>
                             <li>
                                 <a href="manage.php">Manage Products</a>
+                            </li>
+                                                        <li>
+                                <a href="productslist.php">Product List</a>
                             </li>
                         </ul>
                         <form class="navbar-form navbar-right" role="search">
@@ -49,7 +52,7 @@
                                 <input type="text" class="form-control" />
                             </div>
                             <button type="submit" class="btn btn-default">
-                                Submit
+                                Search
                             </button>
                         </form>
                     </div>
@@ -57,10 +60,46 @@
                 </nav>
             </div>
         </div>
-        <h1>Manage Products</h1>
+        <div>
+            <div class="container col-sm-4">
+             <form role="form">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" class="form-control" id="name" name="name" placeholder="Enter products name">
+    </div>
+    <div class="form-group">
+        <label for="category">Categories</label>
+        <?php
+        
+        $query = "SELECT name FROM Categories"; // Run your query
+         $result = mysqli_query($db,$query);
+        echo '<select class="form-control" id="category" name="category">'; // Open your drop down box
+        while ($row = mysqli_fetch_array($result)) {
+           echo '<option value="'.$row['name'].'">'.$row['name'].'</option>';
+        }
+        echo '</select>';// Close your drop down box
+         mysqli_close($db); 
+        ?>
+    </div>
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input type="text" class="form-control" id="price" name="price" placeholder="Enter price">
+    </div>
+    <div class="form-group">
+      <label for="price">Quantity:</label>
+      <input type="number" class="form-control" id="quantity" name="quantity" min="0" max="999" placeholder="How many?">
+    </div>
+     <div class="form-group">
+      <label for="price">Description:</label>
+      <input type="text" class="form-control" id="description" name="description" placeholder="Enter description">
+    </div>
+    <button type="button" class="btn btn-primary" id="send_product">Add Product</button>
+  </form>
+        </div>
+    </div>
     </div>
     
-      
+      <script type="text/javascript" src="app.js"></script>
     </body>
 
     </html>

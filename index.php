@@ -35,13 +35,16 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav ">
                             <li>
-                                <a href="#">Products</a>
+                                <a href="buy.php">Add sale</a>
                             </li>
                             <li>
-                                <a href="#">Categories</a>
+                                <a href="categories.php">Manage Categories</a>
                             </li>
                             <li>
                                 <a href="manage.php">Manage Products</a>
+                            </li>
+                            <li>
+                                <a href="productslist.php">Product List</a>
                             </li>
                         </ul>
                         <form class="navbar-form navbar-right" role="search">
@@ -49,7 +52,7 @@
                                 <input type="text" class="form-control" />
                             </div>
                             <button type="submit" class="btn btn-default">
-                                Submit
+                                Search
                             </button>
                         </form>
                     </div>
@@ -60,14 +63,18 @@
     </div>
               <?php 
     
-    $query = "SELECT * FROM Users"; 
+    $query = "SELECT * FROM Products"; 
     $result = mysqli_query($db,$query);
     
     echo "<table class='table table-hover table-bordered'>";
-    echo "<thead><tr><td>ID</td><td>username</td></tr></thead>";
+    echo "<thead><tr><td>Category ID</td><td>Product Name</td><td>Price</td><td>Quantity</td><td>Description</td></tr></thead>";
     
-    while($row = mysqli_fetch_array($result)){   
-    echo "<tr><td>" . $row['id'] . "</td><td>" . $row['username'] . "</td></tr>";  
+    while($row = mysqli_fetch_array($result)){
+        $currid = $row['c_id'];
+        $query2 = "SELECT c_id, name FROM Categories WHERE c_id = '$currid'";
+        $result2 = mysqli_query($db,$query2);
+        $row2 = mysqli_fetch_assoc($result2);
+    echo "<tr><td>" . $row2['name'] . "</td><td>" . $row['name'] . "</td><td>" . $row['price'] . "$</td><td>" . $row['quantity'] . "</td><td>" . $row['description'] . "</td></tr>";  
     }
     
     echo "</table>"; 
