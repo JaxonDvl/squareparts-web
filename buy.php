@@ -12,12 +12,14 @@
     <link rel="stylesheet" href="style.css">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 </head>
 
 <body>
@@ -62,45 +64,38 @@
         </div>
         <div>
             <div class="container col-sm-4">
-                <h4>Add a product</h4>
-             <form role="form">
-    <div class="form-group">
-      <label for="name">Name:</label>
-      <input type="text" class="form-control" id="name" name="name" placeholder="Enter products name">
-    </div>
-    <div class="form-group">
-        <label for="category">Categories</label>
-        <?php
-        
-        $query = "SELECT name FROM Categories"; // Run your query
-         $result = mysqli_query($db,$query);
-        echo '<select class="form-control" id="category" name="category">'; // Open your drop down box
-        while ($row = mysqli_fetch_array($result)) {
-           echo '<option value="'.$row['name'].'">'.$row['name'].'</option>';
-        }
-        echo '</select>';// Close your drop down box
-         mysqli_close($db); 
-        ?>
-    </div>
-    <div class="form-group">
-      <label for="price">Price:</label>
-      <input type="text" class="form-control" id="price" name="price" placeholder="Enter price">
-    </div>
-    <div class="form-group">
-      <label for="price">Quantity:</label>
-      <input type="number" class="form-control" id="quantity" name="quantity" min="0" max="999" placeholder="How many?">
-    </div>
-     <div class="form-group">
-      <label for="price">Description:</label>
-      <input type="text" class="form-control" id="description" name="description" placeholder="Enter description">
-    </div>
-    <button type="button" class="btn btn-primary" id="send_product">Add Product</button>
-  </form>
+                <legend>Please select time span</legend>
+<form class="form-inline">
+	
+	<div class="form-group">
+		<label for="fromDatePicker">From</label>
+	    <div class='input-group date' id='from-date'>
+	        <input type='text' class="form-control" />
+	        <span class="input-group-addon">
+	            <span class="glyphicon glyphicon-calendar"></span>
+	        </span>
+	    </div>
+	</div>
+
+	<div class="form-group">
+		<label for="toDatePicker">To</label>
+	    <div class='input-group date' id='to-date'>
+	        <input type='text' class="form-control" />
+	        <span class="input-group-addon">
+	            <span class="glyphicon glyphicon-calendar"></span>
+	        </span>
+	    </div>
+	</div>
+</form>
         </div>
     </div>
     </div>
+    <br/><br/>
+    <div class="container mytable">
+        
+    </div>
     
-      <script type="text/javascript" src="app.js"></script>
+      <script type="text/javascript" src="reportapp.js"></script>
     </body>
 
     </html>

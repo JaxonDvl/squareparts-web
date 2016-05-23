@@ -1,4 +1,5 @@
 $(document).ready(function() {
+ 
     $('#send_product').on('click', function(e) {
         // console.log('it works');
         add_product();
@@ -31,6 +32,21 @@ $(document).ready(function() {
      $('#save_settings').on('click', function(e) {
         // console.log('it works');
         save_settings();
+
+    });
+     $('.quantity-buy').on('click', function(e) {
+        // console.log('it works');
+        var selbuy = $(this).parent().siblings();
+        var productName = selbuy[1].textContent;
+        var availableQuantity = parseInt(selbuy[3].textContent);
+        var quantityBought = $(this).parent().siblings('.quantity-val').children('.qunit').val();
+        if(availableQuantity>=quantityBought){
+            console.log(quantityBought);
+            buy_product(productName, quantityBought);
+        }else{
+            console.log(quantityBought);
+            alert('Not enought products in inventory');
+        }
 
     });
 });
@@ -143,4 +159,18 @@ function save_settings(){
     .done(function( msg ) {
         console.log("cliked save setting")
     });
+}
+function buy_product(name, quantity){
+     var sendData =$.ajax({
+            method: "POST",
+            url: "add_sale.php",
+            data: {
+                name: name,
+                quantity: quantity
+            }
+    })
+    .done(function( msg ) {
+        console.log("added sale");
+    });
+    
 }

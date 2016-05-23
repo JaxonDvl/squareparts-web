@@ -77,7 +77,7 @@
         $result2 = mysqli_query($db,$query2);
         $row2 = mysqli_fetch_assoc($result2);
         if($row['quantity']>0){
-            echo "<tr><td>" . $row2['name'] . "</td><td>" . $row['name'] . "</td><td>" . $row['price'] . "$</td><td>" . $row['quantity'] . "</td><td>" . $row['description'] . "</td><td><input type='number' class='form-control' id='quantity' name='quantity' min='0' max='999' placeholder='0'></td><td><button type='button' class='btn btn-success delete_category' name="."'".$row['id']."'"." >Buy</button></td></tr>";  
+            echo "<tr><td>" . $row2['name'] . "</td><td>" . $row['name'] . "</td><td>" . $row['price'] . "$</td><td>" . $row['quantity'] . "</td><td>" . $row['description'] . "</td><td class='quantity-val'><input type='number' class='form-control qunit' name='quantity' min='0' max='999' placeholder='0'></td><td><button type='button' class='btn btn-success quantity-buy' name="."'".$row['id']."'"." >Buy</button></td></tr>";  
         }
         }
     
@@ -87,6 +87,7 @@
     ?>
     </div>
     </div>
+    <script type="text/javascript" src="app.js"></script>
     </body>
 
     </html>
