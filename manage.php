@@ -62,6 +62,7 @@
         </div>
         <div>
             <div class="container col-sm-4">
+                <h4>Add a product</h4>
              <form role="form">
     <div class="form-group">
       <label for="name">Name:</label>

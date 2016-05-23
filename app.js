@@ -15,6 +15,21 @@ $(document).ready(function() {
         delete_category(c_id);
 
     });
+    $('#get_products').on('click', function(e) {
+        // console.log('it works');
+        get_products();
+
+    });
+    $('#edit_category').on('click', function(e) {
+        // console.log('it works');
+        edit_category();
+
+    });
+     $('#save_settings').on('click', function(e) {
+        // console.log('it works');
+        save_settings();
+
+    });
 });
 
 function add_product(){
@@ -71,5 +86,58 @@ function delete_category(del_id){
     })
     .done(function( msg ) {
         console.log('done removing category');
+    });
+}
+
+function get_products(){
+    var category = $('#category').val();
+    var sendData =$.ajax({
+            method: "POST",
+            url: "get_products.php",
+            data: {
+                category: category,
+            }
+    })
+    .done(function( msg ) {
+        $('.mytable').append(msg);
+    });
+}
+
+function edit_category(){
+     var category = $('#categoryedit').val();
+      var sendData =$.ajax({
+            method: "POST",
+            url: "edit_category.php",
+            data: {
+                category: category,
+            }
+    })
+    .done(function( msg ) {
+        console.log(JSON.parse(msg));
+        var myobj=JSON.parse(msg);
+        $('#cidedit').val(myobj.c_id);
+        $('#nameedit').val(myobj.name);
+        $('#descriptionedit').val(myobj.description);
+        
+    });
+}
+
+function save_settings(){
+    var category = $('#categoryedit').val();
+    var newcid = $('#cidedit').val();
+    var newname = $('#nameedit').val();
+    var newdescription = $('#descriptionedit').val();
+    var sendData =$.ajax({
+            method: "POST",
+            url: "save_settings.php",
+            data: {
+                category: category,
+                cid: newcid,
+                name: newname,
+                description: newdescription 
+            }
+    })
+    .done(function( msg ) {
+        console.log("cliked save setting")
     });
 }

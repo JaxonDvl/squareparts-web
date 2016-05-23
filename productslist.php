@@ -62,11 +62,8 @@
         </div>
         <div>
             <div class="container col-sm-4">
+                <h4>Select Products in category</h4>
              <form role="form">
-    <div class="form-group">
-      <label for="name">Name:</label>
-      <input type="text" class="form-control" id="name" name="name" placeholder="Enter products name">
-    </div>
     <div class="form-group">
         <label for="category">Categories</label>
         <?php
@@ -81,22 +78,16 @@
          mysqli_close($db); 
         ?>
     </div>
-    <div class="form-group">
-      <label for="price">Price:</label>
-      <input type="text" class="form-control" id="price" name="price" placeholder="Enter price">
-    </div>
-    <div class="form-group">
-      <label for="price">Quantity:</label>
-      <input type="number" class="form-control" id="quantity" name="quantity" min="0" max="999" placeholder="How many?">
-    </div>
-     <div class="form-group">
-      <label for="price">Description:</label>
-      <input type="text" class="form-control" id="description" name="description" placeholder="Enter description">
-    </div>
-    <button type="button" class="btn btn-primary" id="send_product">Add Product</button>
+   
+    <button type="button" class="btn btn-primary" id="get_products">Browse category</button>
   </form>
         </div>
     </div>
+    </div>
+    <br/>
+    <br/>
+    <div class="container mytable">
+        
     </div>
     
       <script type="text/javascript" src="app.js"></script>

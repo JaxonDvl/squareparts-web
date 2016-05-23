@@ -100,11 +100,54 @@
     
     echo "</table>"; 
     
-    mysqli_close($db); 
+    // mysqli_close($db); 
     ?>
     
 </div>
+   <div class="container col-sm-6">
+       <div class="row">
+                <h4>Edit Category </h4>
+             <form role="form">
+    <div class="form-group">
+        <label for="category">Categories</label>
+        <?php
+        
+        $query2 = "SELECT name FROM Categories"; // Run your query
+         $result2 = mysqli_query($db,$query2);
+        echo '<select class="form-control" id="categoryedit" name="category">'; // Open your drop down box
+        while ($row2 = mysqli_fetch_array($result2)) {
+           echo '<option value="'.$row2['name'].'">'.$row2['name'].'</option>';
+        }
+        echo '</select>';// Close your drop down box
+         mysqli_close($db); 
+        ?>
     </div>
+   
+    <button type="button" class="btn btn-primary" id="edit_category">Edit this category</button>
+    <br/>
+    <br/>
+    <h4>Category Settings</h4>
+                <div class="form-group">
+                <label for="price">Category id:</label>
+                <input type="number" class="form-control" id="cidedit" name="cid" min="0" max="999" placeholder="Wait UID">
+            </div>
+            <div class="form-group">
+                <label for="name">Category Name:</label>
+                <input type="text" class="form-control" id="nameedit" name="name" placeholder="Wait Name">
+            </div>
+
+            <div class="form-group">
+                <label for="price">Description:</label>
+                <input type="text" class="form-control" id="descriptionedit" name="description" placeholder="Wait description">
+            </div>
+            <button type="button" class="btn btn-primary" id="save_settings">Save Settings</button>
+            
+  </form>
+        </div>
+
+    </div>
+    <br/>
+    <br/>
       <script type="text/javascript" src="app.js"></script>
     </body>
 
