@@ -37,7 +37,7 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav ">
                             <li>
-                                <a href="buy.php">Add sale</a>
+                                <a href="buy.php">Sale reports</a>
                             </li>
                             <li>
                                 <a href="categories.php">Manage Categories</a>
